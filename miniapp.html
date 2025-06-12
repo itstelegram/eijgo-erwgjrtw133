@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AI Community - Telegram Mini App</title>
+    
+    <!-- Telegram Web App Script -->
+    <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .gradient-border {
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
+            border: 2px solid transparent;
+        }
+        .backdrop-blur-xl {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .variant-selector {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px;
+            border-radius: 20px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .variant-btn {
+            padding: 8px 16px;
+            border-radius: 16px;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        .variant-btn.active {
+            background: white;
+            color: black;
+        }
+        .variant-content {
+            display: none;
+            min-height: 100vh;
+            padding-top: 60px;
+        }
+        .variant-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Переключатель вариантов -->
+    <div class="variant-selector">
+        <button class="variant-btn active" onclick="switchVariant(1)">Минимал</button>
+        <button class="variant-btn" onclick="switchVariant(2)">Perplexity</button>
+        <button class="variant-btn" onclick="switchVariant(3)">OpenAI</button>
+        <button class="variant-btn" onclick="switchVariant(4)">Apple</button>
+        <button class="variant-btn" onclick="switchVariant(5)">Игровой</button>
+    </div>
+
+    <!-- Вариант 1: Минималистичный с градиентами -->
+    <div id="variant-1" class="variant-content active">
+        <div class="max-w-md mx-auto p-4">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <!-- Шапка со стриком -->
+                <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 text-white">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-sm opacity-90">Ваш стрик</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-3xl font-bold">3</span>
+                                <span class="text-lg">дня подряд 🔥</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm opacity-90">Награды</p>
+                            <div class="flex gap-2 mt-1">
+                                <span class="text-2xl">🏆</span>
+                                <span class="text-2xl opacity-50">🎯</span>
+                                <span class="text-2xl opacity-50">⭐</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/20 rounded-full px-4 py-2 text-sm inline-block">
+                        Следующая награда через 4 дня
+                    </div>
+                </div>
+
+                <!-- Основное меню -->
+                <div class="p-6 space-y-3">
+                    <button onclick="showAlert('Расписание')" class="w-full bg-gradient-to-r from-purple-50 to-indigo-50 hover:from-purple-100 hover:to-indigo-100 p-4 rounded-xl flex items-center gap-4 transition-all group">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-left flex-1">
+                            <h3 class="font-semibold text-gray-800">Расписание</h3>
+                            <p class="text-sm text-gray-500">Ближайшее событие в 15:00</p>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+
+                    <button onclick="showAlert('AI Hub')" class="w-full bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 p-4 rounded-xl flex items-center gap-4 transition-all group">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-left flex-1">
+                            <h3 class="font-semibold text-gray-800">AI Hub Общий</h3>
+                            <p class="text-sm text-gray-500">128 участников онлайн</p>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+
+                    <button onclick="showAlert('Курсы')" class="w-full bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 p-4 rounded-xl flex items-center gap-4 transition-all group">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <div class="text-left flex-1">
+                            <h3 class="font-semibold text-gray-800">Курсы по ИИ</h3>
+                            <p class="text-sm text-gray-500">12 активных курсов</p>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+
+                    <button onclick="showAlert('ИИ Куратор')" class="w-full bg-gradient-to-r from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 p-4 rounded-xl flex items-center gap-4 transition-all group">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-left flex-1">
+                            <h3 class="font-semibold text-gray-800">ИИ Куратор</h3>
+                            <p class="text-sm text-gray-500">Доступен 24/7</p>
+                        </div>
+                        <span class="px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full">Онлайн</span>
+                    </button>
+                </div>
+
+                <!-- Кнопка перехода в чат -->
+                <div class="p-6 pt-0">
+                    <button onclick="openChat()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] shadow-lg">
+                        Перейти в чат
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вариант 2: Perplexity Style -->
+    <div id="variant-2" class="variant-content">
+        <div class="max-w-md mx-auto p-4">
+            <div class="bg-gray-900 rounded-2xl shadow-2xl overflow-hidden">
+                <!-- Верхняя панель -->
+                <div class="bg-gray-800 p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+                                3
+                            </div>
+                            <div>
+                                <p class="text-white font-medium">День подряд</p>
+                                <p class="text-gray-400 text-xs">Отличный прогресс!</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                                <span class="text-sm">🔥</span>
+                            </div>
+                            <div class="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center">
+                                <span class="text-sm">💎</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Поисковая строка в стиле Perplexity -->
+                    <div class="relative">
+                        <input type="text" placeholder="Спросить у AI сообщества..." 
+                               class="w-full bg-gray-700 text-white placeholder-gray-400 px-4 py-3 rounded-lg pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Основное содержимое -->
+                <div class="p-4 space-y-3">
+                    <!-- Раздел "Исследовать" -->
+                    <div class="bg-gray-800 rounded-lg p-4">
+                        <h3 class="text-white font-medium mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                            Исследовать AI
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="showAlert('GPT-5')" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors">
+                                <p class="text-sm text-blue-400 font-medium">GPT-5 слухи</p>
+                                <p class="text-xs text-gray-400">23 обсуждения</p>
+                            </button>
+                            <button onclick="showAlert('Midjourney')" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors">
+                                <p class="text-sm text-purple-400 font-medium">Midjourney v6</p>
+                                <p class="text-xs text-gray-400">156 примеров</p>
+                            </button>
+                            <button onclick="showAlert('Claude')" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors">
+                                <p class="text-sm text-green-400 font-medium">Claude 3</p>
+                                <p class="text-xs text-gray-400">89 отзывов</p>
+                            </button>
+                            <button onclick="showAlert('AI Agents')" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-lg text-left transition-colors">
+                                <p class="text-sm text-yellow-400 font-medium">AI агенты</p>
+                                <p class="text-xs text-gray-400">Новое</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Быстрые действия -->
+                    <div class="space-y-2">
+                        <button onclick="showAlert('AI События')" class="w-full bg-gray-800 hover:bg-gray-700 p-3 rounded-lg flex items-center justify-between transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-white text-sm font-medium">AI События</p>
+                                    <p class="text-gray-400 text-xs">Вебинар через 2ч</p>
+                                </div>
+                            </div>
+                            <svg class="w-4 h-4 text-gray-600 group-hover:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+
+                        <button onclick="showAlert('Дискуссии')" class="w-full bg-gray-800 hover:bg-gray-700 p-3 rounded-lg flex items-center justify-between transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-white text-sm font-medium">Дискуссии</p>
+                                    <p class="text-gray-400 text-xs">342 активных тем</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                <svg class="w-4 h-4 text-gray-600 group-hover:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </button>
+
+                        <button onclick="showAlert('AI Обучение')" class="w-full bg-gray-800 hover:bg-gray-700 p-3 rounded-lg flex items-center justify-between transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-white text-sm font-medium">AI Обучение</p>
+                                    <p class="text-gray-400 text-xs">Новый курс доступен</p>
+                                </div>
+                            </div>
+                            <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">NEW</span>
+                        </button>
+
+                        <button onclick="showAlert('AI Ассистент')" class="w-full bg-gray-800 hover:bg-gray-700 p-3 rounded-lg flex items-center justify-between transition-colors group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-white text-sm font-medium">AI Ассистент</p>
+                                    <p class="text-gray-400 text-xs">Спросить что угодно</p>
+                                </div>
+                            </div>
+                            <svg class="w-4 h-4 text-gray-600 group-hover:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Нижняя панель -->
+                <div class="bg-gray-800 p-4">
+                    <button onclick="openChat()" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-3 px-4 rounded-lg transition-all">
+                        Открыть сообщество
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вариант 3: OpenAI Style -->
+    <div id="variant-3" class="variant-content">
+        <div class="max-w-md mx-auto p-4">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <!-- Заголовок -->
+                <div class="p-6 border-b border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h1 class="text-xl font-semibold text-gray-900">AI Community</h1>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl">🔥</span>
+                            <span class="text-lg font-medium text-gray-700">3 дня</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Прогресс в стиле OpenAI -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-600">Ваш прогресс</span>
+                            <span class="text-sm font-medium text-gray-900">Уровень 1</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full" style="width: 43%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <span class="text-xs text-gray-500">0 XP</span>
+                            <span class="text-xs text-gray-500">1000 XP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Основные разделы -->
+                <div class="p-6 space-y-4">
+                    <!-- GPT-подобный интерфейс -->
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-900">AI Assistant</h3>
+                                <p class="text-xs text-gray-500">Powered by GPT-4</p>
+                            </div>
+                        </div>
+                        <button onclick="showAlert('AI Assistant')" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-left text-gray-500 hover:border-gray-400 transition-colors">
+                            Задать вопрос сообществу...
+                        </button>
+                    </div>
+
+                    <!-- Меню в стиле OpenAI -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="showAlert('События')" class="bg-white border border-gray-200 hover:border-gray-300 rounded-lg p-4 transition-all hover:shadow-sm">
+                            <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-medium text-gray-900 text-sm">События</h4>
+                            <p class="text-xs text-gray-500 mt-1">3 предстоящих</p>
+                        </button>
+
+                        <button onclick="showAlert('Форум')" class="bg-white border border-gray-200 hover:border-gray-300 rounded-lg p-4 transition-all hover:shadow-sm">
+                            <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-medium text-gray-900 text-sm">Форум</h4>
+                            <p class="text-xs text-gray-500 mt-1">128 онлайн</p>
+                        </button>
+
+                        <button onclick="showAlert('Обучение')" class="bg-white border border-gray-200 hover:border-gray-300 rounded-lg p-4 transition-all hover:shadow-sm">
+                            <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-medium text-gray-900 text-sm">Обучение</h4>
+                            <p class="text-xs text-gray-500 mt-1">12 курсов</p>
+                        </button>
+
+                        <button onclick="showAlert('AI Tutor')" class="bg-white border border-gray-200 hover:border-gray-300 rounded-lg p-4 transition-all hover:shadow-sm relative">
+                            <div class="absolute top-2 right-2 w-2 h-2 bg-green-500 rounded-full"></div>
+                            <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h4 class="font-medium text-gray-900 text-sm">AI Tutor</h4>
+                            <p class="text-xs text-gray-500 mt-1">Доступен</p>
+                        </button>
+                    </div>
+
+                    <!-- Статистика -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-medium text-gray-900 mb-3">Статистика сообщества</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Участников</span>
+                                <span class="text-sm font-medium text-gray-900">2,847</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">Обсуждений сегодня</span>
+                                <span class="text-sm font-medium text-gray-900">156</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm text-gray-600">AI-генераций</span>
+                                <span class="text-sm font-medium text-gray-900">12.4K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопка действия -->
+                <div class="p-6 pt-0">
+                    <button onclick="openChat()" class="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                        Присоединиться к обсуждению
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вариант 4: Apple Style -->
+    <div id="variant-4" class="variant-content">
+        <div class="max-w-md mx-auto p-4">
+            <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl overflow-hidden border border-gray-200/50">
+                <!-- Заголовок в стиле iOS -->
+                <div class="p-6 pb-4">
+                    <div class="text-center mb-6">
+                        <h1 class="text-3xl font-semibold text-gray-900 mb-2">AI Community</h1>
+                        <p class="text-gray-500">Исследуйте будущее вместе</p>
+                    </div>
+                    
+                    <!-- Стрик карточка -->
+                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-6 text-white text-center shadow-lg">
+                        <div class="float-animation">
+                            <span class="text-6xl mb-2 block">🔥</span>
+                        </div>
+                        <h2 class="text-4xl font-bold mb-1">3</h2>
+                        <p class="text-lg opacity-90">дня подряд</p>
+                        <div class="mt-4 flex justify-center gap-1">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                            <div class="w-2 h-2 bg-white/30 rounded-full"></div>
+                            <div class="w-2 h-2 bg-white/30 rounded-full"></div>
+                            <div class="w-2 h-2 bg-white/30 rounded-full"></div>
+                            <div class="w-2 h-2 bg-white/30 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Основные функции -->
+                <div class="px-6 pb-6">
+                    <!-- Карточки в стиле iOS -->
+                    <div class="bg-gray-50/80 backdrop-blur rounded-2xl p-1 mb-4">
+                        <button onclick="showAlert('События')" class="w-full p-4 hover:bg-white/60 rounded-2xl transition-all flex items-center justify-between group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="font-semibold text-gray-900">События</h3>
+                                    <p class="text-sm text-gray-500">AI Workshop в 15:00</p>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div class="h-px bg-gray-200 mx-4"></div>
+                        
+                        <button onclick="showAlert('Сообщество')" class="w-full p-4 hover:bg-white/60 rounded-2xl transition-all flex items-center justify-between group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="font-semibold text-gray-900">Сообщество</h3>
+                                    <p class="text-sm text-gray-500">128 участников онлайн</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                <svg class="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </button>
+                        
+                        <div class="h-px bg-gray-200 mx-4"></div>
+                        
+                        <button onclick="showAlert('AI Обучение')" class="w-full p-4 hover:bg-white/60 rounded-2xl transition-all flex items-center justify-between group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-2xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="font-semibold text-gray-900">AI Обучение</h3>
+                                    <p class="text-sm text-gray-500">12 интерактивных курсов</p>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div class="h-px bg-gray-200 mx-4"></div>
+                        
+                        <button onclick="showAlert('AI Помощник')" class="w-full p-4 hover:bg-white/60 rounded-2xl transition-all flex items-center justify-between group">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="font-semibold text-gray-900">AI Помощник</h3>
+                                    <p class="text-sm text-gray-500">Персональный куратор</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 text-xs font-medium rounded-full">Beta</span>
+                        </button>
+                    </div>
+
+                    <!-- Виджет достижений -->
+                    <div class="bg-gray-50/80 backdrop-blur rounded-2xl p-4 mb-4">
+                        <h3 class="font-semibold text-gray-900 mb-3">Достижения</h3>
+                        <div class="flex gap-3">
+                            <div class="flex-1 text-center">
+                                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-2 shadow-sm">
+                                    <span class="text-2xl">🎯</span>
+                                </div>
+                                <p class="text-xs text-gray-600">Первые шаги</p>
+                            </div>
+                            <div class="flex-1 text-center opacity-40">
+                                <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                                    <span class="text-2xl blur-sm">🚀</span>
+                                </div>
+                                <p class="text-xs text-gray-400">7 дней</p>
+                            </div>
+                            <div class="flex-1 text-center opacity-40">
+                                <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                                    <span class="text-2xl blur-sm">💎</span>
+                                </div>
+                                <p class="text-xs text-gray-400">30 дней</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Главная кнопка -->
+                    <button onclick="openChat()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-6 rounded-2xl transition-all transform hover:scale-[1.02] shadow-lg">
+                        Продолжить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вариант 5: Яркий и игровой -->
+    <div id="variant-5" class="variant-content">
+        <div class="max-w-md mx-auto p-4">
+            <div class="bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 rounded-3xl shadow-xl overflow-hidden">
+                <!-- Геймификация -->
+                <div class="p-6 bg-white/50 backdrop-blur">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl flex flex-col items-center justify-center text-white shadow-lg transform rotate-3">
+                                    <span class="text-3xl font-bold">3</span>
+                                    <span class="text-xs">ДЕНЬ</span>
+                                </div>
+                                <div class="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1.5 shadow-lg animate-bounce">
+                                    <span class="text-xl">⚡</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-800">Супер стрик!</h2>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <div class="flex">
+                                        <span class="text-yellow-400">⭐</span>
+                                        <span class="text-yellow-400">⭐</span>
+                                        <span class="text-yellow-400">⭐</span>
+                                        <span class="text-gray-300">⭐</span>
+                                        <span class="text-gray-300">⭐</span>
+                                    </div>
+                                    <span class="text-xs text-gray-600">Уровень 1</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-medium text-gray-600">XP</p>
+                            <p class="text-2xl font-bold text-purple-600">450</p>
+                        </div>
+                    </div>
+
+                    <!-- Достижения -->
+                    <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-4">
+                        <p class="text-sm font-medium text-gray-700 mb-2">Твои достижения</p>
+                        <div class="flex gap-3">
+                            <div class="bg-white rounded-xl p-3 shadow-sm">
+                                <span class="text-2xl">🚀</span>
+                                <p class="text-xs mt-1 text-gray-600">Старт</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-3 shadow-sm">
+                                <span class="text-2xl">💬</span>
+                                <p class="text-xs mt-1 text-gray-600">Общительный</p>
+                            </div>
+                            <div class="bg-white/50 rounded-xl p-3 border-2 border-dashed border-gray-300">
+                                <span class="text-2xl opacity-30">🎯</span>
+                                <p class="text-xs mt-1 text-gray-400">Скоро!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Меню -->
+                <div class="p-6 space-y-3">
+                    <button onclick="showAlert('Расписание')" class="w-full bg-white hover:bg-gray-50 shadow-md hover:shadow-lg p-4 rounded-2xl flex items-center gap-4 transition-all group transform hover:-translate-y-0.5">
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-gray-800">Расписание</h3>
+                            <p class="text-sm text-gray-500">Мастер-класс через 2 часа</p>
+                        </div>
+                        <div class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">
+                            Скоро
+                        </div>
+                    </button>
+
+                    <button onclick="showAlert('AI Hub')" class="w-full bg-white hover:bg-gray-50 shadow-md hover:shadow-lg p-4 rounded-2xl flex items-center gap-4 transition-all group transform hover:-translate-y-0.5">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform relative">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                            <div class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
+                                5
+                            </div>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-gray-800">AI Hub Общий</h3>
+                            <p class="text-sm text-gray-500">5 новых сообщений</p>
+                        </div>
+                        <div class="flex -space-x-2">
+                            <div class="w-6 h-6 bg-pink-400 rounded-full border-2 border-white"></div>
+                            <div class="w-6 h-6 bg-purple-400 rounded-full border-2 border-white"></div>
+                            <div class="w-6 h-6 bg-blue-400 rounded-full border-2 border-white"></div>
+                            <div class="w-6 h-6 bg-gray-300 rounded-full border-2 border-white flex items-center justify-center text-xs font-medium">
+                                +12
+                            </div>
+                        </div>
+                    </button>
+
+                    <button onclick="showAlert('Курсы по ИИ')" class="w-full bg-white hover:bg-gray-50 shadow-md hover:shadow-lg p-4 rounded-2xl flex items-center gap-4 transition-all group transform hover:-translate-y-0.5">
+                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-gray-800">Курсы по ИИ</h3>
+                            <p class="text-sm text-gray-500">Продолжить обучение</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-500">Прогресс</p>
+                            <div class="w-20 h-2 bg-gray-200 rounded-full mt-1">
+                                <div class="w-3/4 h-full bg-emerald-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </button>
+
+                    <button onclick="showAlert('ИИ Куратор PRO')" class="w-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 shadow-md hover:shadow-lg p-4 rounded-2xl flex items-center gap-4 transition-all group transform hover:-translate-y-0.5 text-white">
+                        <div class="w-14 h-14 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold">ИИ Куратор PRO</h3>
+                            <p class="text-sm opacity-90">Персональный помощник</p>
+                        </div>
+                        <span class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm font-medium animate-pulse">
+                            NEW
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Кнопка чата -->
+                <div class="p-6 pt-0">
+                    <button onclick="openChat()" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-6 rounded-2xl transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        Присоединиться к чату
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Инициализация Telegram Web App
+        const tg = window.Telegram.WebApp;
+        
+        // Автоматическое разворачивание на весь экран при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Настройка цветов
+            tg.setHeaderColor('#6366f1'); // Индиго для заголовка
+            tg.setBackgroundColor('#f9fafb'); // Светло-серый фон
+            
+            // Разворачиваем приложение
+            tg.expand();
+            
+            // Запрашиваем полноэкранный режим (доступно с Bot API 8.0+)
+            if (tg.requestFullscreen) {
+                tg.requestFullscreen();
+            }
+            
+            // Готовность приложения
+            tg.ready();
+        });
+
+        // Переключение вариантов
+        function switchVariant(variantNumber) {
+            // Скрываем все варианты
+            document.querySelectorAll('.variant-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Убираем активный класс у всех кнопок
+            document.querySelectorAll('.variant-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Показываем выбранный вариант
+            document.getElementById(`variant-${variantNumber}`).classList.add('active');
+            
+            // Делаем кнопку активной
+            document.querySelectorAll('.variant-btn')[variantNumber - 1].classList.add('active');
+            
+            // Меняем цвет заголовка в зависимости от варианта
+            const headerColors = {
+                1: '#7c3aed', // Фиолетовый
+                2: '#1e293b', // Темно-серый
+                3: '#10b981', // Зеленый
+                4: '#3b82f6', // Синий
+                5: '#ec4899'  // Розовый
+            };
+            
+            tg.setHeaderColor(headerColors[variantNumber]);
+        }
+
+        // Функция для показа уведомлений
+        function showAlert(feature) {
+            tg.showAlert(`Вы нажали на: ${feature}`);
+        }
+
+        // Функция открытия чата
+        function openChat() {
+            // Показываем подтверждение
+            tg.showConfirm('Открыть чат сообщества?', (confirmed) => {
+                if (confirmed) {
+                    // Можно отправить данные боту
+                    tg.sendData(JSON.stringify({
+                        action: 'open_chat',
+                        streak: 3,
+                        variant: getCurrentVariant()
+                    }));
+                    
+                    // Или закрыть приложение
+                    // tg.close();
+                }
+            });
+        }
+
+        // Получить текущий вариант
+        function getCurrentVariant() {
+            const activeVariant = document.querySelector('.variant-content.active');
+            return activeVariant ? activeVariant.id.replace('variant-', '') : '1';
+        }
+
+        // Обработка кнопки "Назад" в Telegram
+        tg.BackButton.onClick(() => {
+            tg.close();
+        });
+
+        // Вибрация при нажатии кнопок
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('button')) {
+                tg.HapticFeedback.impactOccurred('light');
+            }
+        });
+    </script>
+</body>
+</html>
