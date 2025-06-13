@@ -1,38 +1,38 @@
-<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col">
+<div class="h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col max-w-[1200px] mx-auto overflow-hidden">
     <!-- Статус бар и заголовок -->
-    <div class="px-6 pt-safe pb-6 flex-shrink-0" style="padding-top: max(env(safe-area-inset-top), 4rem);">
-        <div class="mb-6">
+    <div class="px-4 pt-safe pb-3 flex-shrink-0" style="padding-top: max(env(safe-area-inset-top), 5rem);">
+        <div class="mb-3">
             <div>
-                <h1 class="text-3xl font-bold text-gray-900">AI Hub</h1>
-                <p class="text-gray-600 mt-1">Добро пожаловать обратно!</p>
+                <h1 class="text-2xl font-bold text-gray-900">AI Hub</h1>
+                <p class="text-gray-600 text-sm mt-1">Добро пожаловать обратно!</p>
             </div>
         </div>
         
         <!-- Стрик в стиле iOS -->
-        <div class="bg-white/60 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20">
-            <div class="flex items-center justify-between mb-4">
+        <div class="bg-white/60 backdrop-blur-xl rounded-2xl p-4 shadow-lg border border-white/20">
+            <div class="flex items-center justify-between mb-3">
                 <div>
-                    <p class="text-gray-600 font-medium">Стрик активности</p>
+                    <p class="text-gray-600 font-medium text-sm">Стрик активности</p>
                     <div class="flex items-baseline gap-2 mt-1">
-                        <span class="text-4xl font-bold text-blue-600">3</span>
-                        <span class="text-lg text-gray-700">дня подряд</span>
+                        <span class="text-3xl font-bold text-blue-600">3</span>
+                        <span class="text-base text-gray-700">дня подряд</span>
                     </div>
                 </div>
-                <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-md">
-                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-md">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
                 </div>
             </div>
             
             <!-- Прогресс до следующей награды -->
-            <div class="space-y-3">
-                <div class="flex items-center justify-between text-sm">
+            <div class="space-y-2">
+                <div class="flex items-center justify-between text-xs">
                     <span class="text-gray-600">До следующей награды</span>
                     <span class="font-medium text-gray-900">4 дня осталось</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-300" style="width: 43%"></div>
+                <div class="w-full bg-gray-200 rounded-full h-1.5">
+                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-1.5 rounded-full transition-all duration-300" style="width: 43%"></div>
                 </div>
                 <div class="flex justify-between text-xs text-gray-500">
                     <span>3/7 дней</span>
@@ -43,62 +43,62 @@
     </div>
 
     <!-- Основное содержимое -->
-    <div class="flex-1 px-6 pb-6 overflow-y-auto">
+    <div class="flex-1 px-4 py-2">
         <!-- Быстрые действия -->
-        <div class="grid grid-cols-2 gap-5">
-            <button onclick="showAlert('Расписание')" class="bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 hover:bg-white/80 transition-all active:scale-95 min-h-[140px] flex flex-col items-center">
-                <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 shadow-md">
-                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="grid grid-cols-2 gap-3">
+            <button onclick="showAlert('Расписание')" class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 shadow-lg border border-white/20 hover:bg-white/80 transition-all active:scale-95 flex flex-col items-center">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md mb-3">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
                 </div>
-                <div class="flex-1 flex flex-col justify-end text-center">
-                    <h3 class="font-semibold text-gray-900 text-lg mb-1">Расписание</h3>
-                    <p class="text-gray-600 text-sm">Событие в 15:00</p>
+                <div class="text-center">
+                    <h3 class="font-semibold text-gray-900 text-base mb-1">Расписание</h3>
+                    <p class="text-gray-600 text-xs">Событие в 15:00</p>
                 </div>
             </button>
 
-            <button onclick="showAlert('Сообщения')" class="bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 hover:bg-white/80 transition-all active:scale-95 min-h-[140px] flex flex-col items-center">
-                <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-md">
-                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button onclick="showAlert('Сообщения')" class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 shadow-lg border border-white/20 hover:bg-white/80 transition-all active:scale-95 flex flex-col items-center">
+                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-md mb-3">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                     </svg>
                 </div>
-                <div class="flex-1 flex flex-col justify-end text-center">
-                    <h3 class="font-semibold text-gray-900 text-lg mb-1">Сообщения</h3>
-                    <p class="text-gray-600 text-sm">128 онлайн</p>
+                <div class="text-center">
+                    <h3 class="font-semibold text-gray-900 text-base mb-1">Сообщения</h3>
+                    <p class="text-gray-600 text-xs">128 онлайн</p>
                 </div>
             </button>
 
-            <button onclick="showAlert('AI Помощник')" class="bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 hover:bg-white/80 transition-all active:scale-95 min-h-[140px] flex flex-col items-center">
-                <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-md">
-                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button onclick="showAlert('AI Помощник')" class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 shadow-lg border border-white/20 hover:bg-white/80 transition-all active:scale-95 flex flex-col items-center">
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-md mb-3">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                 </div>
-                <div class="flex-1 flex flex-col justify-end text-center">
-                    <h3 class="font-semibold text-gray-900 text-lg mb-1">AI Помощник</h3>
-                    <p class="text-gray-600 text-sm">Всегда готов</p>
+                <div class="text-center">
+                    <h3 class="font-semibold text-gray-900 text-base mb-1">AI Помощник</h3>
+                    <p class="text-gray-600 text-xs">Всегда готов</p>
                 </div>
             </button>
 
-            <button onclick="showAlert('Обучение')" class="bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-lg border border-white/20 hover:bg-white/80 transition-all active:scale-95 min-h-[140px] flex flex-col items-center">
-                <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 shadow-md">
-                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button onclick="showAlert('Обучение')" class="bg-white/70 backdrop-blur-xl rounded-2xl p-4 shadow-lg border border-white/20 hover:bg-white/80 transition-all active:scale-95 flex flex-col items-center">
+                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-md mb-3">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                     </svg>
                 </div>
-                <div class="flex-1 flex flex-col justify-end text-center">
-                    <h3 class="font-semibold text-gray-900 text-lg mb-1">Обучение</h3>
-                    <p class="text-gray-600 text-sm">12 курсов</p>
+                <div class="text-center">
+                    <h3 class="font-semibold text-gray-900 text-base mb-1">Обучение</h3>
+                    <p class="text-gray-600 text-xs">12 курсов</p>
                 </div>
             </button>
         </div>
     </div>
 
     <!-- Кнопка действия -->
-    <div class="px-6 pb-8 pt-6 flex-shrink-0">
-        <button onclick="openChat()" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-5 px-6 rounded-3xl transition-all transform active:scale-95 shadow-lg text-lg">
+    <div class="px-4 pt-4 flex-shrink-0" style="padding-bottom: max(env(safe-area-inset-bottom), 2rem);">
+        <button onclick="openChat()" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all transform active:scale-95 shadow-lg text-base">
             Открыть сообщество
         </button>
     </div>
