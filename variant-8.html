@@ -1,0 +1,160 @@
+<div class="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 flex flex-col">
+    <!-- Заголовок в стиле Canva -->
+    <div class="px-6 pt-8 pb-6 flex-shrink-0">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h1 class="text-3xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+                    AI Creative Studio
+                </h1>
+                <p class="text-gray-600 mt-1">Создавай с искусственным интеллектом</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
+                    <span class="text-white font-bold">3</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Креативная статистика -->
+        <div class="bg-white rounded-3xl p-6 shadow-lg border border-purple-100">
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-2xl font-bold text-gray-900">47</p>
+                    <p class="text-sm text-gray-600">Дизайнов</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-2xl font-bold text-gray-900">1.2K</p>
+                    <p class="text-sm text-gray-600">Просмотров</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-2xl font-bold text-gray-900">23</p>
+                    <p class="text-sm text-gray-600">Поделились</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основное содержимое -->
+    <div class="flex-1 px-6 space-y-6 overflow-y-auto">
+        <!-- Быстрое создание -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span>✨</span>
+                Быстрое создание
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="showAlert('AI Постер')" class="bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl p-6 text-white shadow-xl hover:scale-105 transition-all active:scale-95">
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg">AI Постер</h3>
+                    <p class="text-sm opacity-90 mt-1">Создать с ИИ</p>
+                </button>
+
+                <button onclick="showAlert('Презентация')" class="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl p-6 text-white shadow-xl hover:scale-105 transition-all active:scale-95">
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg">Презентация</h3>
+                    <p class="text-sm opacity-90 mt-1">AI шаблоны</p>
+                </button>
+
+                <button onclick="showAlert('Логотип')" class="bg-gradient-to-br from-green-500 to-emerald-500 rounded-3xl p-6 text-white shadow-xl hover:scale-105 transition-all active:scale-95">
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg">Логотип</h3>
+                    <p class="text-sm opacity-90 mt-1">Генератор AI</p>
+                </button>
+
+                <button onclick="showAlert('Соцсети')" class="bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl p-6 text-white shadow-xl hover:scale-105 transition-all active:scale-95">
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg">Соцсети</h3>
+                    <p class="text-sm opacity-90 mt-1">Посты AI</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Недавние проекты -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span>🎨</span>
+                Недавние проекты
+            </h2>
+            
+            <div class="space-y-3">
+                <button onclick="showAlert('AI Community Poster')" class="w-full bg-white rounded-2xl p-4 shadow-lg border border-gray-100 hover:shadow-xl transition-all group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center">
+                            <span class="text-white text-2xl">🤖</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-gray-900 group-hover:text-purple-600 transition-colors">AI Community Poster</h3>
+                            <p class="text-gray-600 text-sm mt-1">Изменено 2 часа назад</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="px-2 py-1 bg-purple-100 text-purple-600 text-xs rounded-full">Постер</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full">Готов</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 group-hover:text-purple-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+
+                <button onclick="showAlert('Neural Network Infographic')" class="w-full bg-white rounded-2xl p-4 shadow-lg border border-gray-100 hover:shadow-xl transition-all group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center">
+                            <span class="text-white text-2xl">📊</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Neural Network Infographic</h3>
+                            <p class="text-gray-600 text-sm mt-1">Изменено вчера</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">Инфографика</span>
+                                <span class="px-2 py-1 bg-yellow-100 text-yellow-600 text-xs rounded-full">В работе</span>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка действия -->
+    <div class="px-6 pb-6 pt-4 flex-shrink-0">
+        <button onclick="openChat()" class="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-3xl transition-all transform active:scale-95 shadow-xl text-lg">
+            Создать с AI
+        </button>
+    </div>
+</div> 

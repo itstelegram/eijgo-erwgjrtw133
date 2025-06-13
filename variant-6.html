@@ -1,0 +1,160 @@
+<div class="min-h-screen bg-white flex flex-col">
+    <!-- Заголовок в стиле Notion -->
+    <div class="px-6 pt-8 pb-6 flex-shrink-0 border-b border-gray-100">
+        <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                <span class="text-2xl">🧠</span>
+            </div>
+            <div>
+                <h1 class="text-2xl font-semibold text-gray-900">AI Community Workspace</h1>
+                <p class="text-gray-500 text-sm">Последнее обновление: сегодня</p>
+            </div>
+        </div>
+        
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+            <span>🏠 Главная</span>
+            <span>/</span>
+            <span class="text-gray-900">AI Community</span>
+        </div>
+        
+        <!-- Стрик блок -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center gap-4">
+            <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">3</span>
+            </div>
+            <div>
+                <p class="font-medium text-gray-900">Стрик активности</p>
+                <p class="text-sm text-gray-600">3 дня подряд • Следующая цель: 7 дней</p>
+            </div>
+            <div class="ml-auto">
+                <span class="text-2xl">🔥</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основное содержимое -->
+    <div class="flex-1 px-6 py-6 space-y-4 overflow-y-auto">
+        <!-- Быстрые действия -->
+        <div class="space-y-3">
+            <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                <span>⚡</span>
+                Быстрые действия
+            </h2>
+            
+            <button onclick="showAlert('Новая заметка')" class="w-full bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg p-4 text-left transition-colors group">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gray-200 rounded-md flex items-center justify-center group-hover:bg-gray-300 transition-colors">
+                        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-900">Создать новую заметку</p>
+                        <p class="text-sm text-gray-500">Ctrl+N</p>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+        <!-- Блоки контента -->
+        <div class="space-y-3">
+            <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                <span>📋</span>
+                Сегодня
+            </h2>
+            
+            <!-- Расписание блок -->
+            <button onclick="showAlert('Расписание')" class="w-full bg-white border border-gray-200 rounded-lg p-4 text-left hover:shadow-sm transition-all group">
+                <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-blue-100 rounded flex items-center justify-center mt-0.5">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">AI Workshop</h3>
+                        <p class="text-sm text-gray-500 mt-1">Сегодня в 15:00 • Zoom</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">Подтверждено</span>
+                            <span class="text-xs text-gray-400">23 участника</span>
+                        </div>
+                    </div>
+                </div>
+            </button>
+
+            <!-- Сообщество блок -->
+            <button onclick="showAlert('Сообщество')" class="w-full bg-white border border-gray-200 rounded-lg p-4 text-left hover:shadow-sm transition-all group">
+                <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-purple-100 rounded flex items-center justify-center mt-0.5">
+                        <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-medium text-gray-900 group-hover:text-purple-600 transition-colors">Обсуждения сообщества</h3>
+                        <p class="text-sm text-gray-500 mt-1">128 участников онлайн</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <div class="flex -space-x-1">
+                                <div class="w-5 h-5 bg-blue-400 rounded-full border border-white"></div>
+                                <div class="w-5 h-5 bg-green-400 rounded-full border border-white"></div>
+                                <div class="w-5 h-5 bg-purple-400 rounded-full border border-white"></div>
+                            </div>
+                            <span class="text-xs text-gray-400">+125 других</span>
+                        </div>
+                    </div>
+                </div>
+            </button>
+
+            <!-- Обучение блок -->
+            <button onclick="showAlert('Обучение')" class="w-full bg-white border border-gray-200 rounded-lg p-4 text-left hover:shadow-sm transition-all group">
+                <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-orange-100 rounded flex items-center justify-center mt-0.5">
+                        <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-medium text-gray-900 group-hover:text-orange-600 transition-colors">Курсы по AI</h3>
+                        <p class="text-sm text-gray-500 mt-1">12 активных курсов</p>
+                        <div class="mt-2">
+                            <div class="flex justify-between text-xs text-gray-500 mb-1">
+                                <span>Прогресс</span>
+                                <span>3/12 завершено</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                <div class="bg-orange-500 h-1.5 rounded-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </button>
+
+            <!-- AI Помощник блок -->
+            <button onclick="showAlert('AI Помощник')" class="w-full bg-white border border-gray-200 rounded-lg p-4 text-left hover:shadow-sm transition-all group">
+                <div class="flex items-start gap-3">
+                    <div class="w-6 h-6 bg-green-100 rounded flex items-center justify-center mt-0.5">
+                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-medium text-gray-900 group-hover:text-green-600 transition-colors">AI Помощник</h3>
+                        <p class="text-sm text-gray-500 mt-1">Готов ответить на вопросы</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span class="text-xs text-green-600">Онлайн</span>
+                        </div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Кнопка действия -->
+    <div class="px-6 pb-6 pt-4 flex-shrink-0 border-t border-gray-100">
+        <button onclick="openChat()" class="w-full bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-4 rounded-lg transition-colors text-base">
+            Открыть workspace
+        </button>
+    </div>
+</div> 

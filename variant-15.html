@@ -1,0 +1,267 @@
+<div class="min-h-screen bg-white flex flex-col">
+    <!-- Заголовок в стиле Airbnb -->
+    <div class="px-6 pt-8 pb-6 flex-shrink-0">
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center">
+                    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">AI Experiences</h1>
+                    <p class="text-gray-500 text-sm">Открывай мир AI</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+                    <span class="text-white font-bold">3</span>
+                </div>
+                <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Поиск -->
+        <div class="bg-white rounded-full border border-gray-300 p-4 shadow-lg mb-6">
+            <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <div class="flex-1">
+                    <p class="font-medium text-gray-900">Куда хотите отправиться?</p>
+                    <p class="text-sm text-gray-500">В любое место • Любая неделя • Добавить гостей</p>
+                </div>
+                <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Статистика путешествий -->
+        <div class="bg-gradient-to-r from-red-50 to-pink-50 rounded-3xl p-6 border border-red-100">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-gray-900 text-lg">Ваши AI путешествия</h3>
+                <span class="text-red-500 text-2xl">✈️</span>
+            </div>
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <p class="text-2xl font-bold text-gray-900">12</p>
+                    <p class="text-sm text-gray-600">Опытов</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-gray-900">5</p>
+                    <p class="text-sm text-gray-600">Стран</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-gray-900">47</p>
+                    <p class="text-sm text-gray-600">Отзывов</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основное содержимое -->
+    <div class="flex-1 px-6 space-y-6 overflow-y-auto">
+        <!-- Рекомендации -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span>🌟</span>
+                Рекомендуемые опыты
+            </h2>
+            
+            <div class="space-y-4">
+                <!-- Опыт 1 -->
+                <button onclick="showAlert('AI Workshop в Кремниевой долине')" class="w-full bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-all group">
+                    <div class="bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 h-48 flex items-center justify-center relative">
+                        <div class="absolute top-4 right-4">
+                            <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="text-center text-white">
+                            <div class="text-6xl mb-4">🤖</div>
+                            <h3 class="text-xl font-bold">AI Workshop</h3>
+                            <p class="text-sm opacity-90">Кремниевая долина</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-gray-900 group-hover:text-red-600 transition-colors">Мастер-класс по AI в Кремниевой долине</h3>
+                                <p class="text-gray-600 text-sm mt-1">Проводит Андрей Карпатый</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="flex items-center gap-1">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="font-bold text-gray-900">4.95</span>
+                            </div>
+                            <span class="text-gray-400">•</span>
+                            <span class="text-gray-600 text-sm">127 отзывов</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-gray-900">$299</span>
+                                <span class="text-gray-600 text-sm">за человека</span>
+                            </div>
+                            <span class="px-3 py-1 bg-red-100 text-red-600 text-xs rounded-full font-medium">Популярно</span>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Опыт 2 -->
+                <button onclick="showAlert('Виртуальный тур по лаборатории DeepMind')" class="w-full bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-all group">
+                    <div class="bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 h-48 flex items-center justify-center relative">
+                        <div class="absolute top-4 right-4">
+                            <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="text-center text-white">
+                            <div class="text-6xl mb-4">🧠</div>
+                            <h3 class="text-xl font-bold">DeepMind Tour</h3>
+                            <p class="text-sm opacity-90">Лондон, Великобритания</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-gray-900 group-hover:text-red-600 transition-colors">Виртуальный тур по лаборатории DeepMind</h3>
+                                <p class="text-gray-600 text-sm mt-1">Проводит команда исследователей</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="flex items-center gap-1">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="font-bold text-gray-900">4.89</span>
+                            </div>
+                            <span class="text-gray-400">•</span>
+                            <span class="text-gray-600 text-sm">89 отзывов</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-gray-900">$149</span>
+                                <span class="text-gray-600 text-sm">за человека</span>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 text-xs rounded-full font-medium">Онлайн</span>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Опыт 3 -->
+                <button onclick="showAlert('AI Art Studio в Токио')" class="w-full bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-all group">
+                    <div class="bg-gradient-to-br from-pink-400 via-red-500 to-orange-500 h-48 flex items-center justify-center relative">
+                        <div class="absolute top-4 right-4">
+                            <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="text-center text-white">
+                            <div class="text-6xl mb-4">🎨</div>
+                            <h3 class="text-xl font-bold">AI Art Studio</h3>
+                            <p class="text-sm opacity-90">Токио, Япония</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-gray-900 group-hover:text-red-600 transition-colors">Создание AI-арта в студии Токио</h3>
+                                <p class="text-gray-600 text-sm mt-1">Проводит Юки Танака</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="flex items-center gap-1">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span class="font-bold text-gray-900">4.92</span>
+                            </div>
+                            <span class="text-gray-400">•</span>
+                            <span class="text-gray-600 text-sm">156 отзывов</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="font-bold text-gray-900">$189</span>
+                                <span class="text-gray-600 text-sm">за человека</span>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 text-xs rounded-full font-medium">Новинка</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Категории -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span>🗂️</span>
+                Категории
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="showAlert('Мастер-классы')" class="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-md transition-all group">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-200 transition-colors">
+                            <span class="text-2xl">👨‍🏫</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm">Мастер-классы</h3>
+                        <p class="text-gray-500 text-xs mt-1">47 опытов</p>
+                    </div>
+                </button>
+
+                <button onclick="showAlert('Виртуальные туры')" class="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-md transition-all group">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-green-200 transition-colors">
+                            <span class="text-2xl">🌐</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm">Виртуальные туры</h3>
+                        <p class="text-gray-500 text-xs mt-1">23 опыта</p>
+                    </div>
+                </button>
+
+                <button onclick="showAlert('Лаборатории')" class="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-md transition-all group">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-purple-200 transition-colors">
+                            <span class="text-2xl">🔬</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm">Лаборатории</h3>
+                        <p class="text-gray-500 text-xs mt-1">15 опытов</p>
+                    </div>
+                </button>
+
+                <button onclick="showAlert('Конференции')" class="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-md transition-all group">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-orange-200 transition-colors">
+                            <span class="text-2xl">🎤</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm">Конференции</h3>
+                        <p class="text-gray-500 text-xs mt-1">31 опыт</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка действия -->
+    <div class="px-6 pb-6 pt-4 flex-shrink-0 border-t border-gray-200">
+        <button onclick="openChat()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-6 rounded-2xl transition-colors text-base">
+            Исследовать опыты
+        </button>
+    </div>
+</div> 

@@ -1,0 +1,260 @@
+<div class="min-h-screen bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 flex flex-col">
+    <!-- Заголовок в стиле Duolingo -->
+    <div class="px-6 pt-8 pb-6 flex-shrink-0">
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <span class="text-3xl">🦉</span>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-white">AI Learning</h1>
+                    <p class="text-green-100 text-sm">Изучай AI весело!</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 bg-white/20 rounded-full px-3 py-1">
+                    <span class="text-yellow-300 text-lg">🔥</span>
+                    <span class="text-white font-bold">3</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/20 rounded-full px-3 py-1">
+                    <span class="text-blue-300 text-lg">💎</span>
+                    <span class="text-white font-bold">247</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Прогресс обучения -->
+        <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-6 border border-white/30">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-white font-bold text-lg">Сегодняшняя цель</h3>
+                <span class="text-green-200 text-sm">3/5 уроков</span>
+            </div>
+            <div class="w-full bg-white/20 rounded-full h-3 mb-4">
+                <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-3 rounded-full" style="width: 60%"></div>
+            </div>
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <p class="text-2xl font-bold text-white">15</p>
+                    <p class="text-green-200 text-sm">Дней подряд</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-white">1,247</p>
+                    <p class="text-green-200 text-sm">Очков XP</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-white">12</p>
+                    <p class="text-green-200 text-sm">Уровень</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основное содержимое -->
+    <div class="flex-1 px-6 space-y-6 overflow-y-auto">
+        <!-- Уроки -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span>📚</span>
+                Уроки AI
+            </h2>
+            
+            <div class="space-y-4">
+                <!-- Урок 1 - Завершен -->
+                <button onclick="showAlert('Основы AI')" class="w-full bg-green-500 hover:bg-green-600 rounded-3xl p-5 text-white transition-all transform hover:scale-105 shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                            <span class="text-3xl">✅</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-lg">Основы AI</h3>
+                            <p class="text-green-100 text-sm">Что такое искусственный интеллект</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="px-2 py-1 bg-white/20 rounded-full text-xs">+50 XP</span>
+                                <span class="text-yellow-300">⭐⭐⭐</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">👑</span>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Урок 2 - Завершен -->
+                <button onclick="showAlert('Machine Learning')" class="w-full bg-blue-500 hover:bg-blue-600 rounded-3xl p-5 text-white transition-all transform hover:scale-105 shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                            <span class="text-3xl">✅</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-lg">Machine Learning</h3>
+                            <p class="text-blue-100 text-sm">Как машины учатся</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="px-2 py-1 bg-white/20 rounded-full text-xs">+75 XP</span>
+                                <span class="text-yellow-300">⭐⭐⭐</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">👑</span>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Урок 3 - Текущий -->
+                <button onclick="showAlert('Neural Networks')" class="w-full bg-purple-500 hover:bg-purple-600 rounded-3xl p-5 text-white transition-all transform hover:scale-105 shadow-lg border-4 border-yellow-400">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center animate-pulse">
+                            <span class="text-3xl">🧠</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-lg">Neural Networks</h3>
+                            <p class="text-purple-100 text-sm">Нейронные сети и их архитектура</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="px-2 py-1 bg-yellow-400 text-purple-900 rounded-full text-xs font-bold">СЕЙЧАС</span>
+                                <span class="text-yellow-300">+100 XP</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center animate-bounce">
+                                <span class="text-purple-900 font-bold text-lg">▶</span>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Урок 4 - Заблокирован -->
+                <button onclick="showAlert('Deep Learning')" class="w-full bg-gray-400 rounded-3xl p-5 text-white opacity-60">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                            <span class="text-3xl">🔒</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h3 class="font-bold text-lg">Deep Learning</h3>
+                            <p class="text-gray-200 text-sm">Глубокое обучение</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="px-2 py-1 bg-white/20 rounded-full text-xs">+150 XP</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">🔒</span>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Достижения -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span>🏆</span>
+                Достижения
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-4 border border-white/30">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-2xl">🔥</span>
+                        </div>
+                        <h3 class="font-bold text-white text-sm">Стрик мастер</h3>
+                        <p class="text-green-200 text-xs mt-1">15 дней подряд</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-4 border border-white/30">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-2xl">🧠</span>
+                        </div>
+                        <h3 class="font-bold text-white text-sm">AI Эксперт</h3>
+                        <p class="text-green-200 text-xs mt-1">10 уроков</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-4 border border-white/30">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-2xl">⚡</span>
+                        </div>
+                        <h3 class="font-bold text-white text-sm">Быстрый ученик</h3>
+                        <p class="text-green-200 text-xs mt-1">5 уроков за день</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 opacity-50">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-2xl">🎯</span>
+                        </div>
+                        <h3 class="font-bold text-white text-sm">Перфекционист</h3>
+                        <p class="text-green-200 text-xs mt-1">100% точность</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Друзья и лидерборд -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                <span>👥</span>
+                Лидерборд
+            </h2>
+            
+            <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-4 border border-white/30">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">1</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">Вы</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-bold text-white">Вы</p>
+                            <p class="text-green-200 text-sm">1,247 XP</p>
+                        </div>
+                        <span class="text-yellow-300 text-lg">👑</span>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                            <span class="text-gray-700 font-bold text-sm">2</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">А</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-bold text-white">Алексей</p>
+                            <p class="text-green-200 text-sm">1,156 XP</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">3</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">М</span>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-bold text-white">Мария</p>
+                            <p class="text-green-200 text-sm">1,089 XP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка действия -->
+    <div class="px-6 pb-6 pt-4 flex-shrink-0">
+        <button onclick="openChat()" class="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-4 px-6 rounded-3xl transition-all transform active:scale-95 shadow-xl text-base">
+            Продолжить обучение
+        </button>
+    </div>
+</div> 
